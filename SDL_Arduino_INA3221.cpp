@@ -84,9 +84,37 @@ void SDL_Arduino_INA3221::INA3221SetConfig(void)
                     INA3221_CONFIG_AVG1 |
                     INA3221_CONFIG_VBUS_CT2 |
                     INA3221_CONFIG_VSH_CT2 |
+                    INA3221_CONFIG_MODE_3 |
                     INA3221_CONFIG_MODE_2 |
-                    INA3221_CONFIG_MODE_1 |
-                    INA3221_CONFIG_MODE_0;
+                    INA3221_CONFIG_MODE_1;
+  wireWriteRegister(INA3221_REG_CONFIG, config);
+}
+
+void SDL_Arduino_INA3221::INA3221SetPowerDown(void)
+{
+  uint16_t config = (0x0000) |
+		  	  	  	(0x0000) |
+					(0x0000) |
+                    INA3221_CONFIG_AVG1 |
+                    INA3221_CONFIG_VBUS_CT2 |
+                    INA3221_CONFIG_VSH_CT2 |
+					(0x0000) |
+					(0x0000) |
+					(0x0000);
+  wireWriteRegister(INA3221_REG_CONFIG, config);
+}
+
+void SDL_Arduino_INA3221::INA3221SetPowerUp(void)
+{
+  uint16_t config = INA3221_CONFIG_ENABLE_CHAN1 |
+                    INA3221_CONFIG_ENABLE_CHAN2 |
+                    INA3221_CONFIG_ENABLE_CHAN3 |
+                    INA3221_CONFIG_AVG1 |
+                    INA3221_CONFIG_VBUS_CT2 |
+                    INA3221_CONFIG_VSH_CT2 |
+					INA3221_CONFIG_MODE_3 |
+					INA3221_CONFIG_MODE_2 |
+					INA3221_CONFIG_MODE_1;
   wireWriteRegister(INA3221_REG_CONFIG, config);
 }
 

@@ -53,9 +53,9 @@
     #define INA3221_CONFIG_VSH_CT1                  (0x0010)  // Vshunt bit 1 Conversion time - See table 5 spec
     #define INA3221_CONFIG_VSH_CT0                  (0x0008)  // Vshunt bit 0 Conversion time - See table 5 spec
 
-    #define INA3221_CONFIG_MODE_2                   (0x0004)  // Operating Mode bit 2 - See table 6 spec
-    #define INA3221_CONFIG_MODE_1                   (0x0002)  // Operating Mode bit 1 - See table 6 spec
-    #define INA3221_CONFIG_MODE_0                   (0x0001)  // Operating Mode bit 0 - See table 6 spec
+    #define INA3221_CONFIG_MODE_3                   (0x0004)  // Operating Mode bit 2 - See table 6 spec
+    #define INA3221_CONFIG_MODE_2                   (0x0002)  // Operating Mode bit 1 - See table 6 spec
+    #define INA3221_CONFIG_MODE_1                   (0x0001)  // Operating Mode bit 0 - See table 6 spec
 
 /*=========================================================================*/
 
@@ -80,6 +80,8 @@ class SDL_Arduino_INA3221{
   float getBusVoltage_V(int channel);
   float getShuntVoltage_mV(int channel);
   float getCurrent_mA(int channel);
+  void INA3221SetPowerDown(void);
+  void INA3221SetPowerUp(void);
 
  private:
   uint8_t INA3221_i2caddr;
